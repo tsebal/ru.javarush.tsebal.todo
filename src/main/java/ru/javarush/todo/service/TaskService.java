@@ -2,7 +2,7 @@ package ru.javarush.todo.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.javarush.todo.dao.TaskTodoDao;
+import ru.javarush.todo.dao.TaskDao;
 import ru.javarush.todo.entity.Status;
 import ru.javarush.todo.entity.Task;
 import org.slf4j.Logger;
@@ -15,9 +15,9 @@ import java.util.Optional;
 public class TaskService {
     private static final Logger logger = LoggerFactory.getLogger(TaskService.class);
 
-    private final TaskTodoDao taskDao;
+    private final TaskDao taskDao;
 
-    public TaskService(TaskTodoDao taskDao) {
+    public TaskService(TaskDao taskDao) {
         this.taskDao = taskDao;
     }
 
