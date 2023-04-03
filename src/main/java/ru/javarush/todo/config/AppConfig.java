@@ -29,7 +29,7 @@ public class AppConfig {
     public DataSource dataSource() {
         HikariDataSource hikariDataSource = new HikariDataSource();
         hikariDataSource.setDriverClassName("com.p6spy.engine.spy.P6SpyDriver");
-        hikariDataSource.setJdbcUrl("jdbc:p6spy:mysql://localhost:3306/todo");
+        hikariDataSource.setJdbcUrl("jdbc:p6spy:mysql://db:3306/todo");
         hikariDataSource.setUsername("root");
         hikariDataSource.setPassword("jkliop33");
         hikariDataSource.setMaximumPoolSize(10);
