@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo Tasks by Tsebal</title>
+
+    <link href="style/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>ToDo Tasks</h2><br>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task,number : ${tasks}">
+                <td th:text="${task.id}" />
+                <td th:text="${task.description}" th:id="'description_' + ${task.id}" />
+                <td th:text="${task.status}" th:id="'status_' + ${task.id}" />
+                <td>
+                    <button class="button-32" role="button" th:id="'edit_' + ${task.id}" th:onclick="'edit_task(' + ${task.id} + ')'">Edit</button>
+                </td>
+                <td>
+                    <button class="button-32" role="button" th:id="'delete_' + ${task.id}" th:onclick="'delete_task(' + ${task.id} + ')'">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="font-weight: bold">Add new task:</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>
+                    <input id='description_new' type='text' value=''>
+                </td>
+                <td>
+                    <label for='status_new'></label>
+                    <select id='status_new'>
+                        <option value='IN_PROGRESS'>IN_PROGRESS</option>
+                        <option value='DONE'>DONE</option>
+                        <option value='PAUSED'>PAUSED</option>
+                    </select>
+                </td>
+                <td>
+                    <button class='button-32' role='button' id='save_new' onclick='add_task()'>Save</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>
+        <button th:each="pageNumber : ${page_numbers}" class="button-32" role="button">
+            <a th:href="@{/(page=${pageNumber}, limit=10)}" th:text="${pageNumber}" th:classappend="${pageNumber == current_page? 'active_page' : ''}"></a>
+        </button>
+    </h1>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="script/todoapp.js"></script>
+</body>
+</html>
